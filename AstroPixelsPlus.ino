@@ -982,8 +982,10 @@ MARCDUINO_ACTION(RemoteSecret, #APRSECRET, ({
 ////////////////
 
 MARCDUINO_ACTION(RemotePair, #APPAIR, ({
+#ifdef USE_DROID_REMOTE
                      printf("Pairing Started ...\n");
                      SMQ::startPairing();
+#endif
                  }))
 
 ////////////////
