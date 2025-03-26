@@ -193,6 +193,8 @@
 #define PIN_AUX4 18
 #define PIN_AUX5 19
 
+#include "can.h"
+
 #ifdef USE_RSERIES_RLD_CURVED
 // Define RSeries RLD clock pin to be AUX5 (could just as well be AUX1, AUX2, AUX3, or AUX4)
 #define PIN_REAR_LOGIC_CLOCK PIN_AUX5
@@ -869,6 +871,8 @@ void setup()
     sMarcSound.setRandomMax(preferences.getInt(PREFERENCE_MARCSOUND_RANDOM_MAX, MARC_SOUND_RANDOM_MAX));
     if (preferences.getInt(PREFERENCE_MARCSOUND_RANDOM, MARC_SOUND_RANDOM))
         sMarcSound.startRandomInSeconds(13);
+
+	setupCAN();
 }
 
 ////////////////
@@ -1115,6 +1119,7 @@ void mainLoop()
             sBuffer[sPos] = '\0';
         }
     }
+	loopCAN();
 }
 
 ////////////////
